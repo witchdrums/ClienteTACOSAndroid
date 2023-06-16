@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 
 interface APIMenu {
-    @GET("/Menu/")
+    @GET("Menu/ObtenerAlimentosConImagenes")
     suspend fun getListaAlimentos(): Response<AlimentosRespuesta>
 }

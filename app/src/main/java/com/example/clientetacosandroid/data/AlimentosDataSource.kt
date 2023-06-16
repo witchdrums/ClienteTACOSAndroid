@@ -25,14 +25,6 @@ class AlimentosDataSource {
                         .create(APIMenu::class.java)
                         .getListaAlimentos();
                 val respuesta = peticion.body();
-                /*
-                var alimentos: List<Alimento> = mutableListOf(
-                    Alimento(1,"Pastor",30.0),
-                    Alimento(2,"Bisteck",30.0),
-                    Alimento(3,"Suadero",30.0),
-                );
-                */
-
                 if(respuesta != null)
                     Result.Success(respuesta.datos);
                 else
@@ -46,7 +38,7 @@ class AlimentosDataSource {
     companion object {
         public fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://192.168.56.1:7118")
+                .baseUrl("http://192.168.1.69:5027")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
