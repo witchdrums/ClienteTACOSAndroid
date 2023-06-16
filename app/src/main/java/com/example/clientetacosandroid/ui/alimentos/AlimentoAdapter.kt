@@ -1,5 +1,9 @@
 package com.example.clientetacosandroid.ui.alimentos
 
+import android.graphics.BitmapFactory
+import android.icu.text.DecimalFormat
+import android.icu.text.DecimalFormatSymbols
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -49,10 +53,29 @@ class AlimentoAdapter (private val onClick: (Alimento) -> Unit) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         val alimento: Alimento = alimentos[position]
-        viewHolder.txtId.text = alimento.id.toString();
+        viewHolder.txtId.text = alimento.descripcion;
         viewHolder.txtNombre.text = alimento.nombre;
-        viewHolder.txtPrecio.text = alimento.precio.toString();
-        //viewHolder.imagen.setImageResource(R.drawable.imagen)
+
+        val symbols = DecimalFormatSymbols()
+        symbols.setGroupingSeparator('\'')
+        symbols.setDecimalSeparator(',')
+        val decimalFormat = DecimalFormat("$ #,###.00", symbols)
+
+        viewHolder.txtPrecio.text = decimalFormat.format(alimento.precio)
+
+        val imagenByteArray: ByteArray =
+            Base64.decode(alimento.imagen?.imagenBytes, Base64.DEFAULT) //convert from base64 to byte array
+        if (imagenByteArray != null) {
+            var imagenBitmap = BitmapFactory.decodeByteArray(
+                imagenByteArray,
+                0,
+                imagenByteArray.size
+            )
+                viewHolder.imagen.setImageBitmap(
+                    imagenBitmap
+                )
+
+        }
         viewHolder.alimentoAsignado = alimento
         Log.d("hi",":D");
     }
