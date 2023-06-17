@@ -25,7 +25,8 @@
     <string name="action_regresar">Regresar</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"¡Hola, "</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_username">No es un email válido.</string>
+    <string name="invalid_password">Debe tener más de 5 caracteres.</string>
+    <string name="invalid_nombre">Sólo puede contener letras del alfabeto español.</string>
     <string name="login_failed">"Login failed"</string>
 </resources>
