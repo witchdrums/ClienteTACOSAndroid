@@ -30,6 +30,6 @@
     <fragment
         android:id="@+id/nav_unirse"
         android:name="com.example.clientetacosandroid.ui.unirse.UnirseFragment"
-        android:label="@string/menu_perfil"
+        android:label="@string/menu_unirse"
         tools:layout="@layout/fragment_unirse" />
 </navigation>
