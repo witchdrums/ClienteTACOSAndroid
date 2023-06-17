@@ -38,7 +38,7 @@ class AlimentosDataSource {
     companion object {
         public fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("http://192.168.1.69:5027")
+                .baseUrl("http://192.168.1.69:5174")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
