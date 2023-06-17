@@ -18,14 +18,14 @@ class AlimentoAdapter (private val onClick: (Alimento) -> Unit) :
     RecyclerView.Adapter<AlimentoAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, val onClick: (Alimento) -> Unit) : RecyclerView.ViewHolder(view) {
-        val txtId: TextView
+        //val txtId: TextView
         val txtNombre: TextView
         val txtPrecio: TextView
         val imagen: ImageView
         var alimentoAsignado: Alimento? = null;
 
         init {
-            txtId = view.findViewById(R.id.txtId)
+            //txtId = view.findViewById(R.id.txtId)
             txtNombre = view.findViewById(R.id.txtNombre)
             txtPrecio = view.findViewById(R.id.txtPrecio)
             imagen = view.findViewById(R.id.imagen)
@@ -53,28 +53,26 @@ class AlimentoAdapter (private val onClick: (Alimento) -> Unit) :
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         val alimento: Alimento = alimentos[position]
-        viewHolder.txtId.text = alimento.descripcion;
+        //viewHolder.txtId.text = alimento.descripcion;
         viewHolder.txtNombre.text = alimento.nombre;
 
         val symbols = DecimalFormatSymbols()
         symbols.setGroupingSeparator('\'')
-        symbols.setDecimalSeparator(',')
+        symbols.setDecimalSeparator('.')
         val decimalFormat = DecimalFormat("$ #,###.00", symbols)
 
         viewHolder.txtPrecio.text = decimalFormat.format(alimento.precio)
 
         val imagenByteArray: ByteArray =
-            Base64.decode(alimento.imagen?.imagenBytes, Base64.DEFAULT) //convert from base64 to byte array
+            Base64.decode(alimento.imagen?.imagenBytes, Base64.DEFAULT)
         if (imagenByteArray != null) {
-            var imagenBitmap = BitmapFactory.decodeByteArray(
+            var imagenBitmap =
+            BitmapFactory.decodeByteArray(
                 imagenByteArray,
                 0,
                 imagenByteArray.size
             )
-                viewHolder.imagen.setImageBitmap(
-                    imagenBitmap
-                )
-
+            viewHolder.imagen.setImageBitmap(imagenBitmap)
         }
         viewHolder.alimentoAsignado = alimento
         Log.d("hi",":D");
