@@ -117,14 +117,6 @@ class UnirseFragment : Fragment() {
             unirseViewModel.unirse(comodin)
         }
 
-
-
-        unirseButton.setOnClickListener {
-            val params = Bundle()
-            params.putString("asdf", Gson().toJson(null))
-            findNavController()
-                .navigate(R.id.action_nav_perfil_to_nav_unirse, params)
-        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
