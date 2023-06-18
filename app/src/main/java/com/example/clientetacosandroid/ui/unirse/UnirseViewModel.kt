@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.clientetacosandroid.R
 import com.example.clientetacosandroid.data.UnirseRepository
 import com.example.clientetacosandroid.data.model.Miembro
+import com.example.clientetacosandroid.data.Result
 import kotlinx.coroutines.launch
+
 
 class UnirseViewModel(private val unirseRepository: UnirseRepository) : ViewModel() {
 
@@ -20,16 +22,15 @@ class UnirseViewModel(private val unirseRepository: UnirseRepository) : ViewMode
 
     fun unirse(miembro: Miembro){
         viewModelScope.launch {
-            /*
-            val result = loginRepository.login(username, password)
+
+            val result = unirseRepository.unirse(miembro);
 
             if (result is Result.Success) {
-                _loginResult.value =
-                    LoginResult(success = LoggedInUserView(displayName = result.data.miembro.persona.nombre))
+                _unirseResult.value = UnirseResult(true)
             } else {
-                _loginResult.value = LoginResult(error = R.string.login_failed)
+                _unirseResult.value = UnirseResult(false)
             }
-            */
+
 
         }
     }
